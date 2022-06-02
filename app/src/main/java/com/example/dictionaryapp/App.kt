@@ -12,10 +12,9 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         instance = this
     }
-
+    //Здесь у нас экземпляр нашего класса Application через который у нас будет доступ к нашим компонентам
     companion object{
         lateinit var instance:App
         private set

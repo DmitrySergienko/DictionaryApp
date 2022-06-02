@@ -17,11 +17,10 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        presenter.attach(this) //connect presenter
+        //connect presenter
+        presenter.attach(this)
 
-        binding.button.setOnClickListener {
-            presenter.getDataFromRepo()
-        }
+       initWord() //
 
     }
 
@@ -32,5 +31,11 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
     override fun onDestroy() {
         presenter.cancelActivity() // detach activity if destroyed
         super.onDestroy()
+    }
+
+    private fun initWord(){
+        binding.button.setOnClickListener {
+            presenter.getDataFromRepo()
+        }
     }
 }
