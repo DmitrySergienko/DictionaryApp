@@ -1,9 +1,11 @@
 package com.example.dictionaryapp.ui.view
 
-import com.example.dictionaryapp.domain.PersonEntity
+import com.example.dictionaryapp.domain.currency.CurrencyRates
+import com.example.dictionaryapp.domain.test.PersonEntity
+import kotlinx.coroutines.Deferred
 
 
 interface MainActivityContract {
 
-    fun showData(personEntity: PersonEntity)
+    fun showData(rate: CurrencyRates)
 }

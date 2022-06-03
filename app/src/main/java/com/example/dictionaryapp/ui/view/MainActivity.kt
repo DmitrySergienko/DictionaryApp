@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dictionaryapp.App
 import com.example.dictionaryapp.databinding.ActivityMainBinding
-import com.example.dictionaryapp.domain.PersonEntity
+import com.example.dictionaryapp.domain.currency.CurrencyRates
+import com.example.dictionaryapp.domain.test.PersonEntity
+import kotlinx.coroutines.Deferred
 
 class MainActivity : AppCompatActivity(), MainActivityContract {
 
@@ -24,9 +26,6 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
 
     }
 
-    override fun showData(personEntity: PersonEntity) {
-        binding.textView.text = personEntity.toString()
-    }
 
     override fun onDestroy() {
         presenter.cancelActivity() // detach activity if destroyed
@@ -37,5 +36,11 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
         binding.button.setOnClickListener {
             presenter.getDataFromRepo()
         }
+    }
+
+    override fun showData(rate: CurrencyRates) {
+//        runOnUiThread {
+            binding.textView.text = rate.toString()
+//        }
     }
 }
