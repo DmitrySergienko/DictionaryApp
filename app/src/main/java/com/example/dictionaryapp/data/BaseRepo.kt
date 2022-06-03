@@ -1,6 +1,6 @@
 package com.example.dictionaryapp.data
 
-import com.example.dictionaryapp.domain.PersonEntity
+import com.example.dictionaryapp.domain.test.PersonEntity
 
 
     interface BaseRepo {

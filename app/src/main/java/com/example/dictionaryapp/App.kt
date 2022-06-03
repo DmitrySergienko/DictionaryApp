@@ -1,13 +1,14 @@
 package com.example.dictionaryapp
 
 import android.app.Application
-import com.example.dictionaryapp.data.BaseRepoImpl
+
+import com.example.dictionaryapp.data.retrofit.currency.RetrofitCurrencyImpl
 import com.example.dictionaryapp.ui.presenters.MainActivityPrecenter
 
 
 class App: Application() {
     val precenter: MainActivityPrecenter by lazy {
-        MainActivityPrecenter(BaseRepoImpl())
+        MainActivityPrecenter(RetrofitCurrencyImpl())
     }
 
     override fun onCreate() {
