@@ -14,6 +14,9 @@ interface MainPresenterContract {
     //send request to CurrencyExchangeApi
     fun getDataFromCurrencyExchangeApi()
 
+    //send request to ApiLayer
+    fun getDataApiLayer()
+
     //to swith off activity (when activity is destroyed
     fun cancelActivity()
 }

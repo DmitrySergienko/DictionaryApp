@@ -6,6 +6,7 @@ import com.example.dictionaryapp.App
 import com.example.dictionaryapp.databinding.ActivityMainBinding
 import com.example.dictionaryapp.domain.currency.CurrencyEx
 import com.example.dictionaryapp.domain.currency.CurrencyRates
+import com.example.dictionaryapp.domain.exchange.Currency
 import com.example.dictionaryapp.domain.test.PersonEntity
 import kotlinx.coroutines.Deferred
 
@@ -52,9 +53,14 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
         binding.textViewExAmount.text = currency.amount.toString()
     }
 
+    override fun showDataApiLayer(currency: Currency) {
+        binding.textViewExBase.text = currency.result.toString()
+
+    }
+
     fun initExchange(){
         binding.buttonExCurrency.setOnClickListener {
-            presenter.getDataFromCurrencyExchangeApi()
+            presenter.getDataApiLayer()
         }
     }
 }

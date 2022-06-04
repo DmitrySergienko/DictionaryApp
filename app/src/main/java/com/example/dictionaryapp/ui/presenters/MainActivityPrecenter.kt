@@ -37,6 +37,13 @@ class MainActivityPrecenter(private val repo: GetCurrencyRep) : MainPresenterCon
         }
     }
 
+    override fun getDataApiLayer() {
+        GlobalScope.launch(Dispatchers.Main){
+            val data = repo.getCurrency().await()
+            activity?.showDataApiLayer(data)
+        }
+    }
+
     //to deactivate activity (when activity is destroyed
     override fun cancelActivity() {
         this.activity = null
