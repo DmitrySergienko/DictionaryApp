@@ -1,4 +1,4 @@
-package com.example.dictionaryapp.data
+package com.example.dictionaryapp.data.test
 
 import com.example.dictionaryapp.domain.test.PersonEntity
 

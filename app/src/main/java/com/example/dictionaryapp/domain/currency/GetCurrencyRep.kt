@@ -8,5 +8,5 @@ interface GetCurrencyRep {
 
     suspend fun getCurrencyExRate() : Deferred<CurrencyRates>
     suspend fun getExangeCurrency() : Deferred<CurrencyEx>
-    suspend fun getCurrency() : Deferred<Currency>
+    suspend fun getCurrency(amount: Int) : Deferred<Currency>
 }

@@ -9,14 +9,18 @@ interface MainPresenterContract {
     fun attach(activity: MainActivityContract)
 
     //send request to Database
-    fun getDataFromRepo()
+   // fun getDataFromRepo()
 
     //send request to CurrencyExchangeApi
-    fun getDataFromCurrencyExchangeApi()
+   // fun getDataFromCurrencyExchangeApi()
 
     //send request to ApiLayer
     fun getDataApiLayer()
 
     //to swith off activity (when activity is destroyed
     fun cancelActivity()
+
+
+    //transfer input amount to MainActivity-Presenter->Data
+    fun inputAmount(t: Int): Int?
 }

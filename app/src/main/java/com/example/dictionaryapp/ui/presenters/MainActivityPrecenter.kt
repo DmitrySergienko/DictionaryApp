@@ -1,9 +1,7 @@
 package com.example.dictionaryapp.ui.presenters
 
-import com.example.dictionaryapp.data.BaseRepo
 import com.example.dictionaryapp.domain.currency.GetCurrencyRep
 import com.example.dictionaryapp.ui.view.MainActivityContract
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -21,7 +19,7 @@ class MainActivityPrecenter(private val repo: GetCurrencyRep) : MainPresenterCon
     }
 
     //send request to Database
-    override fun getDataFromRepo() {
+   /* override fun getDataFromRepo() {
         GlobalScope.launch(Dispatchers.Main) {
             val data = repo.getCurrencyExRate().await()
             activity?.showData(data)
@@ -36,11 +34,13 @@ class MainActivityPrecenter(private val repo: GetCurrencyRep) : MainPresenterCon
             activity?.showCurrency(data)
         }
     }
-
+*/
     override fun getDataApiLayer() {
         GlobalScope.launch(Dispatchers.Main){
-            val data = repo.getCurrency().await()
-            activity?.showDataApiLayer(data)
+            val data = activity?.inputText()?.let { repo.getCurrency(it).await() }
+            if (data != null) {
+                activity?.showDataApiLayer(data)
+            }
         }
     }
 
@@ -48,4 +48,9 @@ class MainActivityPrecenter(private val repo: GetCurrencyRep) : MainPresenterCon
     override fun cancelActivity() {
         this.activity = null
     }
+
+    override fun inputAmount(t: Int): Int? {
+        return activity?.inputText()
+    }
+
 }

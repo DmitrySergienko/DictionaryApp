@@ -30,7 +30,7 @@ class RetrofitCurrencyImpl : GetCurrencyRep {
         return api.getExCurrency("USD","BGN","1000", API_KEY)
     }
 
-    override suspend fun getCurrency(): Deferred<Currency> {
-        return api.getCurrency("RUB","AED","1", API_KEY)
+    override suspend fun getCurrency(amount:Int): Deferred<Currency> {
+        return api.getCurrency("RUB","AED","$amount", API_KEY)
     }
 }
