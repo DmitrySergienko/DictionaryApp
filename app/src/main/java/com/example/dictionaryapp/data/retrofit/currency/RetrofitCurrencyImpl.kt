@@ -1,5 +1,6 @@
 package com.example.dictionaryapp.data.retrofit.currency
 
+import com.example.dictionaryapp.domain.currency.CurrencyEx
 import com.example.dictionaryapp.domain.currency.CurrencyRates
 import com.example.dictionaryapp.domain.currency.GetCurrencyRep
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -21,5 +22,10 @@ class RetrofitCurrencyImpl : GetCurrencyRep {
     override suspend fun getCurrencyExRate(): Deferred<CurrencyRates> {
         return api.getData(API_KEY)
     }
+
+    override suspend fun getExangeCurrency(): Deferred<CurrencyEx> {
+        return api.getExCurrency("USD","BGN","1000", API_KEY)
+    }
+
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dictionaryapp.App
 import com.example.dictionaryapp.databinding.ActivityMainBinding
+import com.example.dictionaryapp.domain.currency.CurrencyEx
 import com.example.dictionaryapp.domain.currency.CurrencyRates
 import com.example.dictionaryapp.domain.test.PersonEntity
 import kotlinx.coroutines.Deferred
@@ -22,17 +23,17 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
         //connect presenter
         presenter.attach(this)
 
-       initWord() //
+       initRate() //show currency rate
+       initExchange() //show exchange
 
     }
-
 
     override fun onDestroy() {
         presenter.cancelActivity() // detach activity if destroyed
         super.onDestroy()
     }
 
-    private fun initWord(){
+    private fun initRate(){
         binding.button.setOnClickListener {
             presenter.getDataFromRepo()
         }
@@ -42,5 +43,18 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
 //        runOnUiThread {
             binding.textView.text = rate.toString()
 //        }
+    }
+
+    override fun showCurrency(currency: CurrencyEx) {
+
+        binding.textViewExBase.text = currency.converted.toString()
+        binding.textViewExTo.text = currency.to
+        binding.textViewExAmount.text = currency.amount.toString()
+    }
+
+    fun initExchange(){
+        binding.buttonExCurrency.setOnClickListener {
+            presenter.getDataFromCurrencyExchangeApi()
+        }
     }
 }

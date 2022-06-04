@@ -11,6 +11,9 @@ interface MainPresenterContract {
     //send request to Database
     fun getDataFromRepo()
 
+    //send request to CurrencyExchangeApi
+    fun getDataFromCurrencyExchangeApi()
+
     //to swith off activity (when activity is destroyed
     fun cancelActivity()
 }

@@ -29,7 +29,15 @@ class MainActivityPrecenter(private val repo: GetCurrencyRep) : MainPresenterCon
          // take data from repo
         //activity show data
     }
-    //to swith off activity (when activity is destroyed
+
+    override fun getDataFromCurrencyExchangeApi() {
+        GlobalScope.launch(Dispatchers.Main){
+            val data = repo.getExangeCurrency().await()
+            activity?.showCurrency(data)
+        }
+    }
+
+    //to deactivate activity (when activity is destroyed
     override fun cancelActivity() {
         this.activity = null
     }
