@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/font/belleza.xml" value="0.1" />
+        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/font/font.xml" value="0.1" />
+        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/font/playball.xml" value="0.1" />
+        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/layout/activity_main.xml" value="0.16346153846153846" />
+        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.173" />
+        <entry key="..\:/Users/Pops/AndroidStudioProjects/DictionaryApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_currency.xml" value="0.173" />
       </map>
     </option>
   </component>

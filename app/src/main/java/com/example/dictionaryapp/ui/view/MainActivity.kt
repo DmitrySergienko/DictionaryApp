@@ -7,6 +7,8 @@ import com.example.dictionaryapp.databinding.ActivityMainBinding
 import com.example.dictionaryapp.domain.currency.CurrencyEx
 import com.example.dictionaryapp.domain.currency.CurrencyRates
 import com.example.dictionaryapp.domain.exchange.Currency
+import java.lang.String
+import java.util.*
 
 class MainActivity : AppCompatActivity(), MainActivityContract {
 
@@ -22,8 +24,8 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
         //connect presenter
         presenter.attach(this)
 
-       //initRate() //show currency rate
-       initExchange() //show exchange
+        //initRate() //show currency rate
+        initExchange() //show exchange
 
     }
 
@@ -32,28 +34,29 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
         super.onDestroy()
     }
 
-  /*  private fun initRate(){
-        binding.button.setOnClickListener {
-            presenter.getDataFromRepo()
-        }
-    }
+    /*  private fun initRate(){
+          binding.button.setOnClickListener {
+              presenter.getDataFromRepo()
+          }
+      }
 
-    override fun showData(rate: CurrencyRates) {
-//        runOnUiThread {
-            binding.textView.text = rate.toString()
-//        }
-    }
+      override fun showData(rate: CurrencyRates) {
+  //        runOnUiThread {
+              binding.textView.text = rate.toString()
+  //        }
+      }
 
-    override fun showCurrency(currency: CurrencyEx) {
+      override fun showCurrency(currency: CurrencyEx) {
 
-        binding.textViewExBase.text = currency.converted.toString()
-        binding.textViewExTo.text = currency.to
-        binding.textViewExAmount.text = currency.amount.toString()
-    }
-*/
+          binding.textViewExBase.text = currency.converted.toString()
+          binding.textViewExTo.text = currency.to
+          binding.textViewExAmount.text = currency.amount.toString()
+      }
+  */
     override fun showDataApiLayer(currency: Currency) {
-        binding.textViewExBase.text = currency.result.toString()
+        val amount = currency.result
 
+        binding.textViewExBase.text = String.format("%(.1f RUB", amount)
     }
 
     override fun inputText(): Int {
@@ -62,7 +65,7 @@ class MainActivity : AppCompatActivity(), MainActivityContract {
     }
 
 
-    fun initExchange(){
+    fun initExchange() {
         binding.buttonExCurrency.setOnClickListener {
             presenter.getDataApiLayer()
 
