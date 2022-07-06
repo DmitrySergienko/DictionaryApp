@@ -1,7 +1,11 @@
 package com.example.dictionaryapp
 
+
+import com.nhaarman.mockito_kotlin.verify
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -16,7 +20,20 @@ class ExampleUnitTest {
 
     }
 
+//Mock test
+    @Test
+    fun testWithMock(){
+        val mock = mock(TestInterface::class.java)
+        Mockito.`when`(mock.test()).thenReturn("test2")
 
+        val targetClass = TargetClass(mock)
+    targetClass.doAction()
+
+    verify(mock).test2("testq2 handled")
+
+    }
+
+//Fake test
     @Test
     fun testWithFake(){
         val dependency = FakeTestInterface()
@@ -26,6 +43,8 @@ class ExampleUnitTest {
         assertEquals("test handled",dependency.lastTest2)
 
     }
+
+
 }
 interface TestInterface{
     fun test(): String
@@ -42,9 +61,9 @@ class TargetClass(private val dependency:TestInterface){
 }
 //Fake Test
 
-class FakeTestInterface:TestInterface{
+class FakeTestInterface : TestInterface {
 
-    var lastTest2:String? = null
+    var lastTest2: String? = null
 
     override fun test(): String {
         return "test"
