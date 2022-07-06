@@ -7,39 +7,25 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class MainActivityPrecenter(private val repo: GetCurrencyRep) : MainPresenterContract {
+class MainActivityPresenter(private val repo: GetCurrencyRep) : MainPresenterContract {
 
     //Здесь будет ссылка на наше активити
     private var activity: MainActivityContract? = null
 
     //attach link to UI (MainActivity)
-    //Этот метод буде вызыватся в активити и в параметр будет передеваться ссылка на активити через this
+    //Этот метод будет вызыватся в активити и в параметр будет передеваться ссылка на активити через this
     override fun attach(activity: MainActivityContract) {
-        this.activity = activity
+        this.activity  = activity
     }
 
-    //send request to Database
-   /* override fun getDataFromRepo() {
-        GlobalScope.launch(Dispatchers.Main) {
-            val data = repo.getCurrencyExRate().await()
-            activity?.showData(data)
-        }
-         // take data from repo
-        //activity show data
-    }
 
-    override fun getDataFromCurrencyExchangeApi() {
-        GlobalScope.launch(Dispatchers.Main){
-            val data = repo.getExangeCurrency().await()
-            activity?.showCurrency(data)
-        }
-    }
-*/
     override fun getDataApiLayer() {
         GlobalScope.launch(Dispatchers.Main){
+
             val data = activity?.inputText()?.let { repo.getCurrency(it).await() }
             if (data != null) {
                 activity?.showDataApiLayer(data)
+
             }
         }
     }
